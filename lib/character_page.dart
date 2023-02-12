@@ -12,15 +12,41 @@ class CharacterPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.amber[100]!,
       body: Column(children: [
-        Text('Character Name',
-            style: GoogleFonts.poiretOne(
-                fontSize: 26, color: const Color.fromARGB(255, 97, 18, 7))),
-        ElevatedButton(
-          onPressed: () {
-            // Navigate back to first route when tapped.
-            Navigator.pop(context);
-          },
-          child: const Text('Go back!'),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text('Character Name',
+              style: GoogleFonts.poiretOne(
+                  fontSize: 26, color: const Color.fromARGB(255, 97, 18, 7))),
+        ),
+        const FractionallySizedBox(
+          alignment: Alignment.topCenter,
+          widthFactor: 0.5,
+          child: Image(image: AssetImage('images/Eve.jpg')),
+        ),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text('Ideals: Тут будет текст об идеалах персонажа',
+                style: GoogleFonts.poiretOne(
+                    fontSize: 26, color: const Color.fromARGB(255, 97, 18, 7))),
+          ),
+        ),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+                'Bonds: Тут будет какая-то привязка идеалов к жизненным ситуациям',
+                style: GoogleFonts.poiretOne(
+                    fontSize: 26, color: const Color.fromARGB(255, 97, 18, 7))),
+          ),
+        ),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text('Flaw: А здесь будет какой-то недостаток персонажа',
+                style: GoogleFonts.poiretOne(
+                    fontSize: 26, color: const Color.fromARGB(255, 97, 18, 7))),
+          ),
         ),
       ]),
     );

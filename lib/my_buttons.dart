@@ -3,6 +3,31 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
+class MyExpandedText extends StatelessWidget {
+  final String? text;
+
+  const MyExpandedText({required this.text, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.amber[100],
+          //border: Border.all(
+          //  color: const Color.fromARGB(255, 97, 18, 7),
+          //  width: 1,
+          //),
+          borderRadius: BorderRadius.circular(0),
+        ),
+        child: Text('$text',
+            style: GoogleFonts.poiretOne(
+                fontSize: 26, color: const Color.fromARGB(255, 97, 18, 7))),
+      ),
+    );
+  }
+}
+
 // ignore: must_be_immutable
 class MyNextPageButton extends StatelessWidget {
   final String? buttonText;
