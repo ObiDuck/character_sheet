@@ -1,26 +1,52 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'character_page.dart';
+import 'home_page.dart';
+import 'package:cupertino_back_gesture/cupertino_back_gesture.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
-            appBar: AppBar(
-                backgroundColor: Colors.amber,
-                title: const Text('Character Sheet For Newbies')),
-            body: Center(
-              child: Container(
-                  margin: const EdgeInsets.all(100),
-                  color: Colors.green,
-                  height: 100,
-                  width: 100,
-                  child: const Text('There will be stuff')),
-            )));
+    return BackGestureWidthTheme(
+      // specify desired width as fixed logical pixels value
+      // backGestureWidth: BackGestureWidth.fixed(200),
+
+      // or as a fraction of the screen width
+      backGestureWidth: BackGestureWidth.fraction(1 / 2),
+
+      child: MaterialApp(
+        theme: ThemeData(
+          // force iOS behaviour on Android (for testing)
+          // (or toggle platform via Flutter Inspector)
+          // platform: TargetPlatform.iOS,
+
+          // specify page transitions for each platform
+          pageTransitionsTheme: const PageTransitionsTheme(
+            builders: {
+              // for Android - default page transition
+              TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
+
+              // for iOS - one which considers ancestor BackGestureWidthTheme
+              TargetPlatform.iOS:
+                  CupertinoPageTransitionsBuilderCustomBackGestureWidth(),
+            },
+          ),
+        ),
+        home: const HomePage(),
+      ),
+    );
   }
 }
