@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'my_buttons.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class UnderAttackPage extends StatelessWidget {
   const UnderAttackPage({super.key});
@@ -10,44 +11,57 @@ class UnderAttackPage extends StatelessWidget {
       body: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         Row(
           children: const [
-            MyExpandedText(text: 'HP: 55'),
-            MyExpandedText(text: 'AC: 19'),
+            MyExpandedTextWithToolTip(
+                text: 'HP: 55',
+                toolTipText:
+                    'Это твое здоровье. Пока оно больше 0 - все хорошо'),
+            MyExpandedTextWithToolTip(
+                text: 'AC: 19',
+                toolTipText:
+                    'Это твоя броня. Противнику надо прокинуть больше этого числа чтобы попасть по тебе'),
           ],
         ),
         Container(
-            decoration: BoxDecoration(
-              color: Colors.amber[100],
-              border: Border.all(
-                color: const Color.fromARGB(255, 97, 18, 7),
-                width: 1,
-              ),
-              borderRadius: BorderRadius.circular(0),
-            ),
             child: Column(
-              children: [
-                Row(
-                  children: const [
-                    MyExpandedText(text: 'STR: 18'),
-                    MyExpandedText(text: 'INT: 17'),
-                  ],
-                ),
-                Row(
-                  children: const [
-                    MyExpandedText(text: 'DEX: 10'),
-                    MyExpandedText(text: 'WIS: 13'),
-                  ],
-                ),
-                Row(
-                  children: const [
-                    MyExpandedText(text: 'CON: 13'),
-                    MyExpandedText(text: 'CHA: 10'),
-                  ],
-                ),
+          children: [
+            Row(
+              children: const [
+                MyExpandedTextWithToolTip(
+                    text: 'STR: 18',
+                    toolTipText:
+                        'Сила: Насколько хорошо ты сможешь смять томат'),
+                MyExpandedTextWithToolTip(
+                    text: 'INT: 17',
+                    toolTipText: 'Интеллект: Знаешь, что томат - это фрукт'),
               ],
-            )),
-        const MyExpandedText(
-          text: 'Abilities and Spells',
-        ),
+            ),
+            Row(
+              children: const [
+                MyExpandedTextWithToolTip(
+                    text: 'DEX: 10',
+                    toolTipText:
+                        'Ловкость: Насколько точно можешь бросить томат'),
+                MyExpandedTextWithToolTip(
+                    text: 'WIS: 13',
+                    toolTipText:
+                        'Мудрость: Знаешь, что не надо класть томат во фруктовый салат'),
+              ],
+            ),
+            Row(
+              children: const [
+                MyExpandedTextWithToolTip(
+                    text: 'CON: 13',
+                    toolTipText:
+                        'Телосложение: Насколько плохо тебе будет после того как съешь испорченный томат'),
+                MyExpandedTextWithToolTip(
+                    text: 'CHA: 10',
+                    toolTipText:
+                        'Харизма: Возможность продать томатный сок как фруктовый смузи'),
+              ],
+            ),
+          ],
+        )),
+        const MyExpandedText(text: 'Abilities and Spells'),
       ]),
     );
   }

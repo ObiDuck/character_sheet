@@ -11,18 +11,59 @@ class MyExpandedText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.amber[100],
-          //border: Border.all(
-          //  color: const Color.fromARGB(255, 97, 18, 7),
-          //  width: 1,
-          //),
-          borderRadius: BorderRadius.circular(0),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          decoration: BoxDecoration(
+            color: const Color(0xFF795548),
+            //border: Border.all(
+            //  color: const Color.fromARGB(255, 97, 18, 7),
+            //  width: 1,
+            //),
+            borderRadius: BorderRadius.circular(0),
+          ),
+          child: Text('$text',
+              style: GoogleFonts.poiretOne(
+                  fontSize: 26, color: const Color(0xFFFFFFFF))),
         ),
-        child: Text('$text',
-            style: GoogleFonts.poiretOne(
-                fontSize: 26, color: const Color.fromARGB(255, 97, 18, 7))),
+      ),
+    );
+  }
+}
+
+class MyExpandedTextWithToolTip extends StatelessWidget {
+  final String? text;
+  final String? toolTipText;
+
+  const MyExpandedTextWithToolTip(
+      {required this.text, required this.toolTipText, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Tooltip(
+        decoration: const BoxDecoration(
+          color: Color(0xFFFFC107),
+        ),
+        message: '$toolTipText',
+        textStyle:
+            GoogleFonts.poiretOne(fontSize: 26, color: Color(0xFF212121)),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            decoration: BoxDecoration(
+              color: const Color(0xFF795548),
+              //border: Border.all(
+              //  color: const Color.fromARGB(255, 97, 18, 7),
+              //  width: 1,
+              //),
+              borderRadius: BorderRadius.circular(0),
+            ),
+            child: Text('$text',
+                style: GoogleFonts.poiretOne(
+                    fontSize: 26, color: const Color(0xFFFFFFFF))),
+          ),
+        ),
       ),
     );
   }
@@ -43,15 +84,14 @@ class MyNextPageButton extends StatelessWidget {
         child: ElevatedButton(
           style: ButtonStyle(
               backgroundColor:
-                  MaterialStateProperty.all<Color>(Colors.amber[100]!),
+                  MaterialStateProperty.all<Color>(const Color(0xFF795548)),
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                   const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.zero,
-                      side:
-                          BorderSide(color: Color.fromARGB(255, 97, 18, 7))))),
+                borderRadius: BorderRadius.zero,
+              ))),
           child: Text('$buttonText',
               style: GoogleFonts.poiretOne(
-                  fontSize: 26, color: const Color.fromARGB(255, 97, 18, 7))),
+                  fontSize: 26, color: const Color(0xFFFFFFFF))),
           onPressed: () {
             // Navigate to second route when tapped.
             Navigator.push(

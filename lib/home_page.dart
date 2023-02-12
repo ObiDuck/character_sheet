@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber[100],
+      backgroundColor: const Color(0xFFFFFFFF),
       body: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         MyNextPageButton(
             buttonText: 'Мой персонаж', page: const CharacterPage()),
